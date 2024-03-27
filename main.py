@@ -72,7 +72,8 @@ def enable_jit(device, app: str):
     print(f"Attaching to process {pid}..")
     pid_hex = format(int(sys.argv[1]), 'x')
     s.sendall(f'$vAttach;{pid_hex}#38'.encode())
-    print("Attach: " + s.recv(1024).decode())
+    out = s.recv(1024).decode()
+    print("Attach: " + out)
 
     if out.startswith('$T11thread'):
         s.sendall('$D#44'.encode())
