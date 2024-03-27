@@ -70,7 +70,7 @@ def enable_jit(device, app: str):
     print("SetDetachOnError: " + s.recv(1024).decode())
 
     print(f"Attaching to process {pid}..")
-    pid_hex = format(int(sys.argv[1]), 'x')
+    pid_hex = format(pid, 'x')
     s.sendall(f'$vAttach;{pid_hex}#38'.encode())
     out = s.recv(1024).decode()
     print("Attach: " + out)
